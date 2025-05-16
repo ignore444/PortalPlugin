@@ -1,19 +1,23 @@
 {
 	"FileVersion": 3,
-	"EngineAssociation": "4.18",
+	"EngineAssociation": "{7458B1E4-4A2E-EDD9-72A8-23A43032C6DD}",
 	"Category": "",
 	"Description": "",
-	"Plugins": [
-		{
-			"Enabled": true,
-			"Name": "PortalPlugin"
-		}
-	],
 	"Modules": [
 		{
 			"Name": "Portals",
 			"Type": "Runtime",
 			"LoadingPhase": "Default"
+		}
+	],
+	"Plugins": [
+		{
+			"Enabled": true,
+			"Name": "PortalPlugin"
+		},
+		{
+			"Name": "XRBase",
+			"Enabled": true
 		}
 	]
 }

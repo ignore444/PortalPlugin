@@ -1,8 +1,10 @@
 // Released under MIT License
 // Copyright (c) Pascal Krabbe 2017
 
-#include "IPortalPlugin.h"
 #include "ViewportResizedComponent.h"
+#include "IPortalPlugin.h"
+#include "Engine/GameViewportClient.h"
+#include "Engine/Engine.h"
 
 //Thanks to https://answers.unrealengine.com/questions/94342/how-to-get-current-screen-sizeresolution.html
 

@@ -1,8 +1,8 @@
 // Released under MIT License
 // Copyright (c) Pascal Krabbe 2017
 
-#include "IPortalPlugin.h"
 #include "PortalFunctionLibrary.h"
+#include "IPortalPlugin.h"
 #include "Components/SceneCaptureComponent2D.h"
 #include "Engine/TextureRenderTarget2D.h"
 #include "IHeadMountedDisplay.h"
@@ -10,6 +10,7 @@
 #include "IXRTrackingSystem.h"
 #include "GameFramework/PlayerController.h"
 #include "Engine.h"
+#include "StereoRendering.h"
 
 //Credit goes to AgentMilkshake1 https://answers.unrealengine.com/questions/234597/screenspace-portals-on-vr.html
 float UPortalFunctionLibrary::GetFOVForCaptureComponents(const APlayerController* ForPlayerController)
@@ -28,7 +29,7 @@ float UPortalFunctionLibrary::GetFOVForCaptureComponents(const APlayerController
 	{
 		return ResultFOV;
 	}
-
+	
 	// FOV changes when we have a VR Headset enabled
 	if (GEngine->XRSystem.IsValid() && GEngine->IsStereoscopic3D())
 	{
@@ -49,14 +50,14 @@ float UPortalFunctionLibrary::GetFOVForCaptureComponents(const APlayerController
 
 			//SteamVR may not have FOV information, try to it via the current viewport
 			ULocalPlayer* Player = GEngine->GetGamePlayer(GEngine->GameViewport, 0);
-			Player->GetProjectionData(GEngine->GameViewport->Viewport, eSSP_FULL, ProjectionData);
+			Player->GetProjectionData(GEngine->GameViewport->Viewport, ProjectionData);
 			
 			float t = ProjectionData.ProjectionMatrix.M[1][1];
 			const float Rad2Deg = 180 / PI;
 			ResultFOV = FMath::Atan(1.f / t) * 4.f * Rad2Deg * EdgeScaling;
 		}
 	}
-
+	
 	return ResultFOV;
 }
 

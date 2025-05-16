@@ -1,6 +1,8 @@
 // Released under MIT License
 // Copyright (c) Pascal Krabbe 2017
 
+using System.IO;
+
 namespace UnrealBuildTool.Rules
 {
 	public class PortalPlugin : ModuleRules
@@ -8,18 +10,16 @@ namespace UnrealBuildTool.Rules
 		public PortalPlugin(ReadOnlyTargetRules Target) : base(Target)
 		{
 			PublicIncludePaths.AddRange(
-				new string[] {
-					"PortalPlugin/Public",
-					// ... add public include paths required here ...
+			   new string[] {
+					Path.Combine(ModuleDirectory, "Public")
 				}
-				);
+                );
 
 			PrivateIncludePaths.AddRange(
 				new string[] {
-					"PortalPlugin/Private",
-					// ... add other private include paths required here ...
+					Path.Combine(ModuleDirectory, "Private")
 				}
-				);
+                );
 
 			PublicDependencyModuleNames.AddRange(
 				new string[]
